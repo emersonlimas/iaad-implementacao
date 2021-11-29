@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<!-- PRETENDO MODIFICAR O NOME DO ARQUIVO "form_clinica"-->
+
+<head>
+    <meta charset="UTF-8">
+    <title>CRUD - Clinica Medico</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+</head>
+
+<body>
+    <div class="col-8 m-auto pt-2 pb-2 text-center">
+        <h1>ADICIONAR MEDICO</h1>
+    </div>
+
+    <!-- FORMULARIO -->
+    <div class="col-8 m-auto pt-2 pb-2 text-center">
+        <form name="clinica" id="clinica" action="/create_clinica" method="post">
+            {%csrf_token%}
+        <div class="form-group mt-4">Código da Clinica: {{adicionar_clinica.CodCli}}</div>
+        <div class="form-group mt-4">Nome da Clinica: {{adicionar_clinica.NomeCli}}</div>
+        <div class="form-group mt-4">Endereço: {{adicionar_clinica.Endereco}}</div>
+        <div class="form-group mt-4">Telefone: {{adicionar_clinica.Telefone}}</div>
+        <div class="form-group mt-4">E-mail: {{adicionar_clinica.Email}}</div>
+        <input type="submit" class="btn btn-success" value="Salvar">
+        </form>
+    </div>
+
+    <div class="col-8 m-auto pt-2 pb-2 text-center">
+        <a href="/" class="btn btn-info">VOLTAR</a>
+    </div>
+
+</body>
+</html>
