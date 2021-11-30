@@ -1,10 +1,12 @@
 from django.forms import ModelForm
-from app.models import CLINICA, ESPECIALIDADE
+from app.models import CLINICA  # ESPECIALIDADES
 
-class CLINICAForm(ModelForm): #Chama um formulario
+
+class CLINICAForm(ModelForm):  # Chama um formulario
     class Meta:
         model = CLINICA
         fields = ['CodCli', 'NomeCli', 'Endereco', 'Telefone', 'Email']
+
 
 '''
 class ESPECIALIDADEForm(ModelForm):
