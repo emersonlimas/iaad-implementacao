@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from app.forms import CLINICAForm
+from app.forms import CLINICAForm, ESPECIALIDADEForm
 
 
 def home(request):
@@ -17,3 +17,17 @@ def create_clinica(request):
     if form.is_valid():
         form.save()
         return redirect('home')
+
+'''
+def form_especialidade(request): #
+    data = {}
+    data['adicionar_especialidade'] = ESPECIALIDADEForm()
+    return render(request, 'adicionar_especialidade.html', data)
+
+ 
+def create_especialidade(request):
+     form = ESPECIALIDADEForm(request.POST or None)
+    if form.is_valid():
+        form.save()
+        return redirect('home')
+'''
