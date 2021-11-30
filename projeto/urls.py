@@ -15,11 +15,21 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from app.views import home, adicionar_clinica, create_clinica
+from app.views import create_espec, home, tab_clinica, tab_espec
+from app.views import form_clinica, form_espec
+from app.views import create_clinica, create_espec
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    #READ
     path('', home, name='home'),
-    path('adicionar_clinica/', adicionar_clinica, name='adicionar_clinica'), #irei modificar o nome da variavel para 'form_clinica'
-    path('create_clinica', create_clinica, name='create_clinica'), #irei modificar o nome da variavel para 'add_clinica'
+    path('tab_clinica', tab_clinica, name='tab_clinica'),
+    path('tab_espec', tab_espec, name='tab_espec'),
+    #FORM
+    path('form_clinica/', form_clinica, name='form_clinica'), 
+    path('form_espec/', form_espec, name='form_espec'),
+    #CREATE
+    path('create_clinica', create_clinica, name='create_clinica'), 
+    path('create_espec', create_espec, name='create_espec'),
 ]

@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 
-<!-- PRETENDO MODIFICAR O NOME DO ARQUIVO "form_clinica"-->
 
 <head>
     <meta charset="UTF-8">
@@ -11,18 +10,16 @@
 
 <body>
     <div class="col-8 m-auto pt-2 pb-2 text-center">
-        <h1>ADICIONAR CLÍNICA</h1>
+        <h1>ADICIONAR ESPECIALIDADE</h1>
     </div>
 
     <!-- FORMULARIO -->
     <div class="col-8 m-auto pt-2 pb-2 text-center">
-        <form name="clinica" id="clinica" action="/create_clinica" method="post">
+        <form name="espec" id="espec" action="/create_espec" method="post">
             {%csrf_token%}
-        <div class="form-group mt-4">Código da Clinica: {{adicionar_clinica.CodCli}}</div>
-        <div class="form-group mt-4">Nome da Clinica: {{adicionar_clinica.NomeCli}}</div>
-        <div class="form-group mt-4">Endereço: {{adicionar_clinica.Endereco}}</div>
-        <div class="form-group mt-4">Telefone: {{adicionar_clinica.Telefone}}</div>
-        <div class="form-group mt-4">E-mail: {{adicionar_clinica.Email}}</div>
+        <div class="form-group mt-4">Código da Especialidade: {{form_espec.CodEspec}}</div>
+        <div class="form-group mt-4">Nome da Especialidade: {{form_espec.NomeEspec}}</div>
+        <div class="form-group mt-4">Descrição: {{form_espec.Descricao}}</div>
         <input type="submit" class="btn btn-success" value="Salvar">
         </form>
     </div>

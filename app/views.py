@@ -1,34 +1,48 @@
 from django.shortcuts import render, redirect
-from app.forms import CLINICAForm  # ESPECIALIDADEForm
+from app.forms import CLINICAForm, ESPECIALIDADEForm
+from app.models import CLINICA, ESPECIALIDADE
 
-
+#Read
 def home(request):
     return render(request, 'index.html')
 
 
-def adicionar_clinica(request):  # irei modificar o nome da função para 'form_clinica'
+def tab_clinica(request):
     data = {}
-    data['adicionar_clinica'] = CLINICAForm()
-    return render(request, 'adicionar_clinica.html', data)
+    data['clinica'] = CLINICA.objects.all()
+    return render(request, 'tab_clinica.html', data)
 
 
+def tab_espec(request):
+    data = {}
+    data['especialidade'] = ESPECIALIDADE.objects.all()
+    return render(request, 'tab_espec.html', data)
+
+
+#FORM
+def form_clinica(request): 
+    data = {}
+    data['form_clinica'] = CLINICAForm()
+    return render(request, 'form_clinica.html', data)
+
+
+def form_espec(request): 
+    data = {}
+    data['form_espec'] = ESPECIALIDADEForm()
+    return render(request, 'form_espec.html', data)
+
+
+#CREATE
 def create_clinica(request):
     form = CLINICAForm(request.POST or None)
     if form.is_valid():
         form.save()
-        return redirect('home')
+        return redirect('tab_clinica')
 
 
-'''
-def form_especialidade(request): #
-    data = {}
-    data['adicionar_especialidade'] = ESPECIALIDADEForm()
-    return render(request, 'adicionar_especialidade.html', data)
-
- 
-def create_especialidade(request):
-     form = ESPECIALIDADEForm(request.POST or None)
+def create_espec(request):
+    form = ESPECIALIDADEForm(request.POST or None)
     if form.is_valid():
         form.save()
-        return redirect('home')
-'''
+        return redirect('tab_espec')
+
