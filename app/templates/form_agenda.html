@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+
+<head>
+    <meta charset="UTF-8">
+    <title>CRUD - Clinica Medico</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+</head>
+
+<body>
+    <div class="col-8 m-auto pt-2 pb-2 text-center">
+        <h1>ADICIONAR PACIENTE</h1>
+    </div>
+
+    <!-- FORMULARIO -->
+    <div class="col-8 m-auto pt-2 pb-2 text-center">
+        <form name="agenda" id="agenda" action="/create_agenda" method="post">
+            {%csrf_token%}
+        <div class="form-group mt-4">Código da Clinica: {{form_agenda.CodCli}}</div>
+        <div class="form-group mt-4">Código do Medico: {{form_agenda.CodMed}}</div>
+        <div class="form-group mt-4">CPF do Paciente: {{form_agenda.CpfPaciente}}</div>
+        <div class="form-group mt-4">Data da Consulta: {{form_agenda.Data}}</div>
+        <input type="submit" class="btn btn-success" value="Salvar">
+        </form>
+    </div>
+
+    <div class="col-8 m-auto pt-2 pb-2 text-center">
+        <a href="/tab_agenda" class="btn btn-info">VOLTAR</a>
+    </div>
+
+</body>
+</html>

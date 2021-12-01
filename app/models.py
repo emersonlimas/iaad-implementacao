@@ -12,7 +12,7 @@ class CLINICA(models.Model):  # MODELO DE UMA UNICA TABELA (Sim, tenho duvidas t
 
 
 class MEDICO(models.Model):
-    CodMed = models.CharField(max_length=3, primary_key=True)
+    CodMed = models.CharField(max_length=4, primary_key=True)
     NomeMed = models.CharField(max_length=130)
     Genero = models.CharField(max_length=1)
     Telefone = models.CharField(max_length=11)
@@ -31,19 +31,19 @@ class PACIENTE(models.Model):
 
 class CLINICAMEDICO(models.Model):
     CodCli = models.CharField(max_length=3)
-    CodMed = models.CharField(max_length=3)
+    CodMed = models.CharField(max_length=4)
     DataIngresso = models.DateField()
     CargaHorariaSemanal = models.CharField(max_length=3)
 
 
 class AGENDACONSULTA(models.Model):
     CodCli = models.CharField(max_length=3)
-    CodMed = models.CharField(max_length=3)
+    CodMed = models.CharField(max_length=4)
     CpfPaciente = models.CharField(max_length=11)
     Data = models.DateField()
 
 
 class ESPECIALIDADE(models.Model):
-    CodEspec = models.CharField(max_length=3, primary_key=True)
+    CodEspec = models.CharField(max_length=2, primary_key=True)
     NomeEspec = models.CharField(max_length=130)
     Descricao = models.CharField(max_length=130)

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+
+<head>
+    <meta charset="UTF-8">
+    <title>CRUD - Clinica Medico</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+</head>
+
+<body>
+    <div class="col-8 m-auto pt-2 pb-2 text-center">
+        <h1>ADICIONAR MEDICO</h1>
+    </div>
+
+    <!-- FORMULARIO -->
+    <div class="col-8 m-auto pt-2 pb-2 text-center">
+        <form name="med" id="med" action="/create_med" method="post">
+            {%csrf_token%}
+        <div class="form-group mt-4">Código do Médico: {{form_med.CodMed}}</div>
+        <div class="form-group mt-4">Nome do Médico: {{form_med.NomeMed}}</div>
+        <div class="form-group mt-4">Genero: {{form_med.Genero}}</div>
+        <div class="form-group mt-4">Telefone: {{form_med.Telefone}}</div>
+        <div class="form-group mt-4">E-mail: {{form_med.Email}}</div>
+        <div class="form-group mt-4">Código da Especialidade: {{form_med.CodEspec}}</div>
+        <input type="submit" class="btn btn-success" value="Salvar">
+        </form>
+    </div>
+
+    <div class="col-8 m-auto pt-2 pb-2 text-center">
+        <a href="/tab_med" class="btn btn-info">VOLTAR</a>
+    </div>
+
+</body>
+</html>
