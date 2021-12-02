@@ -10,23 +10,23 @@
 
 <body>
     <div class="col-8 m-auto pt-2 pb-2 text-center">
-        <h1>ADICIONAR PACIENTE</h1>
+        <h1>ADICIONAR MÉDICO EM UMA CLÍNICA</h1>
     </div>
 
     <!-- FORMULARIO -->
     <div class="col-8 m-auto pt-2 pb-2 text-center">
-        <form name="agenda" id="agenda" action="{% if agenda %}/update_agenda/{{agenda.id}}/{% else %}/create_agenda/{% endif %}" method="post">
+        <form name="climed" id="climed" action="{% if climed %}/update_climed/{{climed.id}}/{% else %}/create_climed/{% endif %}" method="post">
             {%csrf_token%}
-        <div class="form-group mt-4">Código da Clinica: {{form_agenda.CodCli}}</div>
-        <div class="form-group mt-4">Código do Medico: {{form_agenda.CodMed}}</div>
-        <div class="form-group mt-4">CPF do Paciente: {{form_agenda.CpfPaciente}}</div>
-        <div class="form-group mt-4">Data da Consulta: {{form_agenda.Data}}</div>
+        <div class="form-group mt-4">Código da Clinica: {{form_climed.CodCli}}</div>
+        <div class="form-group mt-4">Código do Medico: {{form_climed.CodMed}}</div>
+        <div class="form-group mt-4">Data de Ingresso: {{form_climed.DataIngresso}}</div>
+        <div class="form-group mt-4">Carga Hararia: {{form_climed.CargaHorariaSemanal}}</div>
         <input type="submit" class="btn btn-success" value="Salvar">
         </form>
     </div>
 
     <div class="col-8 m-auto pt-2 pb-2 text-center">
-        <a href="/tab_agenda" class="btn btn-info">VOLTAR</a>
+        <a href="/tab_climed" class="btn btn-info">VOLTAR</a>
     </div>
 
 </body>

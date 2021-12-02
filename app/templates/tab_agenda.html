@@ -30,7 +30,6 @@
                 <th scope="col">CPF do Paciente</th>
                 <th scope="col">Código Clinica</th>
                 <th scope="col">Ações</th>
-                <th scope="col">Deletar</th>
               </tr>
             </thead>
             <tbody>
@@ -40,9 +39,9 @@
                         <td>{{tupla.CpfPaciente}}</td>
                         <td>{{tupla.CodCli}}</td>
                         <td>
-                            <a href="/view/{{tupla.CodCli}}/" class="btn btn-dark">Visualizar</a> <!-- PRA FAZER A LIGAÇÃO, BASTA REVER AS AULAS E MOFICAR CERTINHO, NÃO HÁ DIFICULDADE-->
-                            <a href="/edit/{{tupla.CodCli}}/" class="btn btn-primary">Editar</a>
-                            <a href="/delete_agenda/{{tupla.CodCli}}/" class="btn btn-danger btnDel">Deletar</a>
+                            <a href="/view_agenda/{{tupla.id}}/" class="btn btn-dark">Visualizar</a> <!-- PRA FAZER A LIGAÇÃO, BASTA REVER AS AULAS E MOFICAR CERTINHO, NÃO HÁ DIFICULDADE-->
+                            <a href="/edit_agenda/{{tupla.id}}/" class="btn btn-primary">Editar</a>
+                            <a href="/delete_agenda/{{tupla.id}}/" class="btn btn-danger btnDel">Deletar</a>
                         </td>
                     </tr>
                 {% endfor %}

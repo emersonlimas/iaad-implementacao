@@ -9,11 +9,11 @@
 
 <body>
     <div class="col-8 m-auto pt-2 pb-2 text-center">
-        <h1>TABELA - MEDICOS</h1>
+        <h1>TABELA - CLINICA MEDICO</h1>
     </div>
 
     <div class="col-8 m-auto pt-3 pb-2 text-center">
-        <a href="/form_med" class="btn btn-success">Adicionar</a>
+        <a href="/form_climed" class="btn btn-success">Adicionar</a>
     </div>
 
     <div class="col-8 m-auto pt-3 pb-2 text-center">
@@ -26,32 +26,26 @@
         <table class="table">
             <thead class="thead-dark">
               <tr>
-                <th scope="col">Código do Médico</th>
-                <th scope="col">Nome do Médico</th>
-                <th scope="col">Código da Especialidade</th>
+                <th scope="col">Código da Clínica</th>
+                <th scope="col">Código do Medico</th>
                 <th scope="col">Ações</th>
               </tr>
             </thead>
             <tbody>
-                {% for tupla in medico %}
+                {% for tupla in climed %}
                     <tr>
-                        <th>{{tupla.CodMed}}</th>
-                        <td>{{tupla.NomeMed}}</td>
-                        <td>{{tupla.CodEspec}}</td>
+                        <th>{{tupla.CodCli}}</th>
+                        <td>{{tupla.CodMed}}</td>
                         <td>
-                            <a href="/view_med/{{tupla.CodMed}}/" class="btn btn-dark">Visualizar</a> <!-- PRA FAZER A LIGAÇÃO, BASTA REVER AS AULAS E MOFICAR CERTINHO, NÃO HÁ DIFICULDADE-->
-                            <a href="/edit_med/{{tupla.CodMed}}/" class="btn btn-primary">Editar</a>
-                            <a href="/delete_med/{{tupla.CodMed}}/" class="btn btn-danger btnDel">Deletar</a>
+                            <a href="/view_climed/{{tupla.id}}/" class="btn btn-dark">Visualizar</a> <!-- PRA FAZER A LIGAÇÃO, BASTA REVER AS AULAS E MOFICAR CERTINHO, NÃO HÁ DIFICULDADE-->
+                            <a href="/edit_climed/{{tupla.id}}/" class="btn btn-primary">Editar</a>
+                            <a href="/delete_climed/{{tupla.id}}/" class="btn btn-danger btnDel">Deletar</a>
                         </td>
                     </tr>
                 {% endfor %}
             </tbody>
-          </table>
-        <div class="col-8 m-auto pt-2 pb-2 text-center">
-            <a href="/delete_all_med/" class="btn btn-danger btnDel">Deletar tudo</a>
-        </div> <!--ACRESCENTEI ESSE BOTÃO COM O HREF DO DELETE_ALL-->   
+          </table> 
     </div>
-
     <div class="col-8 m-auto pt-2 pb-2 text-center">
         <a href="/" class="btn btn-info">VOLTAR</a>
     </div>

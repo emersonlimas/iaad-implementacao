@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Tempo de geração: 01-Dez-2021 às 19:29
+-- Tempo de geração: 02-Dez-2021 às 17:51
 -- Versão do servidor: 5.7.36
 -- versão do PHP: 7.4.26
 
@@ -21,6 +21,37 @@ SET time_zone = "+00:00";
 -- Banco de dados: `clinicas`
 --
 
+DELIMITER $$
+--
+-- Procedimentos
+--
+DROP PROCEDURE IF EXISTS `excluir_agenda`$$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `excluir_agenda` ()  BEGIN
+DELETE FROM app_agendaconsulta;
+END$$
+
+DROP PROCEDURE IF EXISTS `excluir_clinicas`$$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `excluir_clinicas` ()  BEGIN
+DELETE FROM app_clinica;
+END$$
+
+DROP PROCEDURE IF EXISTS `excluir_espec`$$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `excluir_espec` ()  BEGIN
+DELETE FROM app_especialidade;
+END$$
+
+DROP PROCEDURE IF EXISTS `excluir_med`$$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `excluir_med` ()  BEGIN
+DELETE FROM app_medico;
+END$$
+
+DROP PROCEDURE IF EXISTS `excluir_pac`$$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `excluir_pac` ()  BEGIN
+DELETE FROM app_paciente;
+END$$
+
+DELIMITER ;
+
 -- --------------------------------------------------------
 
 --
@@ -31,18 +62,18 @@ DROP TABLE IF EXISTS `app_agendaconsulta`;
 CREATE TABLE IF NOT EXISTS `app_agendaconsulta` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `CodCli` varchar(3) NOT NULL,
-  `CodMed` varchar(3) NOT NULL,
+  `CodMed` varchar(4) NOT NULL,
   `CpfPaciente` varchar(11) NOT NULL,
   `Data` date NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 
 --
 -- Extraindo dados da tabela `app_agendaconsulta`
 --
 
 INSERT INTO `app_agendaconsulta` (`id`, `CodCli`, `CodMed`, `CpfPaciente`, `Data`) VALUES
-(1, '105', '006', '10110110110', '2021-12-03');
+(6, '100', '1007', '10310310303', '2021-12-15');
 
 -- --------------------------------------------------------
 
@@ -65,10 +96,7 @@ CREATE TABLE IF NOT EXISTS `app_clinica` (
 --
 
 INSERT INTO `app_clinica` (`CodCli`, `NomeCli`, `Endereco`, `Telefone`, `Email`) VALUES
-('105', 'Clinica da Varzea', 'Rua Dom Pedro, 1, Recife, PE', '81911111111', 'clinicadavarzea@atendimento.com'),
-('101', 'Clinica de Rajada', 'Rua Outro Mundo, 300, Rajada, PE', '87944444444', 'clinicaderajada@atendimento.com'),
-('102', 'Clinica de Dois Irmãos', 'Rua Florisbela, 146, Recife, PE', '8195555555', 'clinicadeDI@atendimento.com'),
-('103', 'Clinica de Juazeiro', 'ua Oswaldo Montenegro, 57, Juazeiro, BA', '74933333333', 'clinicadejuazeiro@atendimento.com');
+('100', 'Clinica de Petrolina', 'Rua Madalena, 505, Petrolina, PE', '87922222222', 'clinicadepetrolina@atendimento.com');
 
 -- --------------------------------------------------------
 
@@ -80,11 +108,18 @@ DROP TABLE IF EXISTS `app_clinicamedico`;
 CREATE TABLE IF NOT EXISTS `app_clinicamedico` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `CodCli` varchar(3) NOT NULL,
-  `CodMed` varchar(3) NOT NULL,
+  `CodMed` varchar(4) NOT NULL,
   `DataIngresso` date NOT NULL,
   `CargaHorariaSemanal` varchar(3) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+
+--
+-- Extraindo dados da tabela `app_clinicamedico`
+--
+
+INSERT INTO `app_clinicamedico` (`id`, `CodCli`, `CodMed`, `DataIngresso`, `CargaHorariaSemanal`) VALUES
+(2, '100', '1007', '2014-08-10', '45');
 
 -- --------------------------------------------------------
 
@@ -94,7 +129,7 @@ CREATE TABLE IF NOT EXISTS `app_clinicamedico` (
 
 DROP TABLE IF EXISTS `app_especialidade`;
 CREATE TABLE IF NOT EXISTS `app_especialidade` (
-  `CodEspec` varchar(3) NOT NULL,
+  `CodEspec` varchar(2) NOT NULL,
   `NomeEspec` varchar(130) NOT NULL,
   `Descricao` varchar(130) NOT NULL,
   PRIMARY KEY (`CodEspec`)
@@ -105,9 +140,7 @@ CREATE TABLE IF NOT EXISTS `app_especialidade` (
 --
 
 INSERT INTO `app_especialidade` (`CodEspec`, `NomeEspec`, `Descricao`) VALUES
-('10', 'Pediatria', 'MEDICOS(AS) PEDIATRAS'),
-('20', 'Dermatologia', 'MEDICOS(AS) DERMATOLOGOS'),
-('30', 'Fisioterapia', 'FISIOTERAPEUTAS');
+('10', 'Pediatria', 'MEDICOS(AS) PEDIATRAS');
 
 -- --------------------------------------------------------
 
@@ -117,12 +150,12 @@ INSERT INTO `app_especialidade` (`CodEspec`, `NomeEspec`, `Descricao`) VALUES
 
 DROP TABLE IF EXISTS `app_medico`;
 CREATE TABLE IF NOT EXISTS `app_medico` (
-  `CodMed` varchar(3) NOT NULL,
+  `CodMed` varchar(4) NOT NULL,
   `NomeMed` varchar(130) NOT NULL,
   `Genero` varchar(1) NOT NULL,
   `Telefone` varchar(11) NOT NULL,
   `Email` varchar(130) NOT NULL,
-  `CodEspec` varchar(3) NOT NULL,
+  `CodEspec` varchar(2) NOT NULL,
   PRIMARY KEY (`CodMed`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
@@ -131,9 +164,7 @@ CREATE TABLE IF NOT EXISTS `app_medico` (
 --
 
 INSERT INTO `app_medico` (`CodMed`, `NomeMed`, `Genero`, `Telefone`, `Email`, `CodEspec`) VALUES
-('001', 'Luarbia Cardoso Rocha', 'F', '74901010100', 'luarbiacr@medico.com', '20'),
-('006', 'Sebastião Oliveira da Mata', 'M', '81911111111', 'sebastiaoom@medico.com', '10'),
-('007', 'Andre Silva Ramalho', 'M', '87977777777', 'andresr@medico.com', '10');
+('1007', 'Andre Silva Ramalho', 'M', '87977777777', 'andresr@medico.com', '10');
 
 -- --------------------------------------------------------
 
@@ -157,7 +188,7 @@ CREATE TABLE IF NOT EXISTS `app_paciente` (
 --
 
 INSERT INTO `app_paciente` (`CpfPaciente`, `NomePac`, `DataNascimento`, `Genero`, `Telefone`, `Email`) VALUES
-('10110110110', 'Lavinia Andressa Nunes', '1990-05-25', 'F', '87963258741', 'laviniaan@paciente.com');
+('10310310303', 'Thiago Orlando Diaz', '2000-01-03', 'M', '87965656565', 'thiago@paciente.com');
 
 -- --------------------------------------------------------
 
@@ -426,6 +457,7 @@ CREATE TABLE IF NOT EXISTS `django_session` (
   PRIMARY KEY (`session_key`),
   KEY `django_session_expire_date_a5c62663` (`expire_date`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+COMMIT;
 
 -- STORED PROCEDURES --
 DELIMITER $$
@@ -464,8 +496,6 @@ END $$
 DELIMITER ;
 
 -- FIM DOS STOREDS PROCEDURES --
-
-COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

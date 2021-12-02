@@ -1,8 +1,7 @@
 from django.shortcuts import render, redirect
-from app.forms import CLINICAForm, ESPECIALIDADEForm, MEDICOForm, PACIENTEForm, AGENDACONSULTAForm
-from app.models import CLINICA, ESPECIALIDADE, MEDICO, PACIENTE, AGENDACONSULTA
-from django.db import connection  # IMPORTEI ESSA NOVA BIBLIOTECA
-
+from app.forms import CLINICAForm, ESPECIALIDADEForm, MEDICOForm, PACIENTEForm, AGENDACONSULTAForm, CLINICAMEDICOForm
+from app.models import CLINICA, CLINICAMEDICO, ESPECIALIDADE, MEDICO, PACIENTE, AGENDACONSULTA
+from django.db import connection  
 # Read------------------------------------------------------------------------
 
 
@@ -40,6 +39,12 @@ def tab_agenda(request):
     return render(request, 'tab_agenda.html', data)
 
 
+def tab_climed(request):
+    data = {}
+    data['climed'] = CLINICAMEDICO.objects.all()
+    return render(request, 'tab_climed.html', data)
+
+
 # FORM------------------------------------------------------------------------
 def form_clinica(request):
     data = {}
@@ -69,6 +74,49 @@ def form_agenda(request):
     data = {}
     data['form_agenda'] = AGENDACONSULTAForm()
     return render(request, 'form_agenda.html', data)
+
+
+def form_climed(request):
+    data = {}
+    data['form_climed'] = CLINICAMEDICOForm()
+    return render(request, 'form_climed.html', data)
+
+
+# VIEW--------------------------------------------------------------------------
+
+def view_clinica(request, pk):
+    data = {}
+    data['clinica'] = CLINICA.objects.get(pk=pk)
+    return render(request, 'view_clinica.html', data)
+
+
+def view_espec(request, pk):
+    data = {}
+    data['especialidade'] = ESPECIALIDADE.objects.get(pk=pk)
+    return render(request, 'view_espec.html', data)
+
+def view_pac(request, pk):
+    data = {}
+    data['paciente'] = PACIENTE.objects.get(pk=pk)
+    return render(request, 'view_pac.html', data)
+
+
+def view_med(request, pk):
+    data = {}
+    data['medico'] = MEDICO.objects.get(pk=pk)
+    return render(request, 'view_med.html', data)
+
+
+def view_agenda(request, pk):
+    data = {}
+    data['agenda'] = AGENDACONSULTA.objects.get(pk=pk)
+    return render(request, 'view_agenda.html', data)
+
+
+def view_climed(request, pk):
+    data = {}
+    data['climed'] = CLINICAMEDICO.objects.get(pk=pk)
+    return render(request, 'view_climed.html', data)
 
 
 # CREATE------------------------------------------------------------------------
@@ -106,6 +154,14 @@ def create_agenda(request):
         form.save()
         return redirect('tab_agenda')
 
+
+def create_climed(request):
+    form = CLINICAMEDICOForm(request.POST or None)
+    if form.is_valid():
+        form.save()
+        return redirect('tab_climed')
+
+
 # EDIT------------------------------------------------------------------------
 
 
@@ -135,6 +191,21 @@ def edit_med(request, pk):
     data['medico'] = MEDICO.objects.get(pk=pk)
     data['form_med'] = MEDICOForm(instance=data['medico'])
     return render(request, 'form_med.html', data)
+
+
+def edit_agenda(request, pk):
+    data = {}
+    data['agenda'] = AGENDACONSULTA.objects.get(pk=pk)
+    data['form_agenda'] = AGENDACONSULTAForm(instance=data['agenda'])
+    return render(request, 'form_agenda.html', data)
+
+
+def edit_climed(request, pk):
+    data = {}
+    data['climed'] = CLINICAMEDICO.objects.get(pk=pk)
+    data['form_climed'] = CLINICAMEDICOForm(instance=data['climed'])
+    return render(request, 'form_climed.html', data)
+
 
 # UPDATE------------------------------------------------------------------------
 
@@ -175,7 +246,26 @@ def update_med(request, pk):
         form.save()
         return redirect('tab_med')
 
-# DELETE E DELETE ALL------------------------------------------------------------
+
+def update_agenda(request, pk):
+    data = {}
+    data['agenda'] = AGENDACONSULTA.objects.get(pk=pk)
+    form = AGENDACONSULTAForm(request.POST or None, instance=data['agenda'])
+    if form.is_valid():
+        form.save()
+        return redirect('tab_agenda')
+
+
+def update_climed(request, pk):
+    data = {}
+    data['climed'] = CLINICAMEDICO.objects.get(pk=pk)
+    form = CLINICAMEDICOForm(request.POST or None, instance=data['climed'])
+    if form.is_valid():
+        form.save()
+        return redirect('tab_climed')
+
+
+# DELETE------------------------------------------------------------
 
 
 def delete_clinica(request, pk):
@@ -208,6 +298,13 @@ def delete_agenda(request, pk):
     return redirect('tab_agenda')
 
 
+def delete_climed(request, pk):
+    climed = CLINICAMEDICO.objects.get(pk=pk)
+    climed.delete()
+    return redirect('tab_climed')
+
+
+# DELETE ALL------------------------------------------------------------
 cursor = connection.cursor()  # ACRESCENTEI DAQUI PRA BAIXO
 
 
