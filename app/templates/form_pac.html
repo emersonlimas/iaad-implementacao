@@ -15,7 +15,7 @@
 
     <!-- FORMULARIO -->
     <div class="col-8 m-auto pt-2 pb-2 text-center">
-        <form name="pac" id="pac" action="/create_pac" method="post">
+        <form name="pac" id="pac" action="{% if paciente %}/update_pac/{{paciente.CpfPaciente}}/{% else %}/create_pac/{% endif %}" method="post">
             {%csrf_token%}
         <div class="form-group mt-4">CPF do Paciente: {{form_pac.CpfPaciente}}</div>
         <div class="form-group mt-4">Nome do Paciente: {{form_pac.NomePac}}</div>

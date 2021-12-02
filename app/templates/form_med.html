@@ -15,7 +15,7 @@
 
     <!-- FORMULARIO -->
     <div class="col-8 m-auto pt-2 pb-2 text-center">
-        <form name="med" id="med" action="/create_med" method="post">
+        <form name="med" id="med" action="{% if medico %}/update_med/{{medico.CodMed}}/{% else %}/create_med/{% endif %}" method="post">
             {%csrf_token%}
         <div class="form-group mt-4">Código do Médico: {{form_med.CodMed}}</div>
         <div class="form-group mt-4">Nome do Médico: {{form_med.NomeMed}}</div>
