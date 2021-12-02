@@ -30,6 +30,7 @@
                 <th scope="col">CPF do Paciente</th>
                 <th scope="col">Código Clinica</th>
                 <th scope="col">Ações</th>
+                <th scope="col">Deletar</th>
               </tr>
             </thead>
             <tbody>
@@ -46,9 +47,11 @@
                     </tr>
                 {% endfor %}
             </tbody>
-          </table>  
+          </table>
+        <div class="col-8 m-auto pt-2 pb-2 text-center">
+            <a href="/delete_all_agenda/" class="btn btn-danger btnDel">Deletar tudo</a>
+        </div> <!--ACRESCENTEI ESSE BOTÃO COM O HREF DO DELETE_ALL-->    
     </div>
-
     <div class="col-8 m-auto pt-2 pb-2 text-center">
         <a href="/" class="btn btn-info">VOLTAR</a>
     </div>

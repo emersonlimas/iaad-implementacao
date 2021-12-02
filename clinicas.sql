@@ -426,6 +426,45 @@ CREATE TABLE IF NOT EXISTS `django_session` (
   PRIMARY KEY (`session_key`),
   KEY `django_session_expire_date_a5c62663` (`expire_date`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+-- STORED PROCEDURES --
+DELIMITER $$
+CREATE PROCEDURE excluir_clinicas ()
+BEGIN
+DELETE FROM app_clinica;
+END $$
+DELIMITER ;
+
+DELIMITER $$
+CREATE PROCEDURE excluir_espec ()
+BEGIN
+DELETE FROM app_especialidade;
+END $$
+DELIMITER ;
+
+DELIMITER $$
+CREATE PROCEDURE excluir_med ()
+BEGIN
+DELETE FROM app_medico;
+END $$
+DELIMITER ;
+
+DELIMITER $$
+CREATE PROCEDURE excluir_pac ()
+BEGIN
+DELETE FROM app_paciente;
+END $$
+DELIMITER ;
+
+DELIMITER $$
+CREATE PROCEDURE excluir_agenda ()
+BEGIN
+DELETE FROM app_agendaconsulta;
+END $$
+DELIMITER ;
+
+-- FIM DOS STOREDS PROCEDURES --
+
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

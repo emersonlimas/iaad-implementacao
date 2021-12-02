@@ -21,7 +21,8 @@ from app.views import create_clinica, create_espec, create_med, create_pac, crea
 from app.views import edit_clinica, edit_espec, edit_pac, edit_med
 from app.views import update_clinica, update_espec, update_pac, update_med
 from app.views import delete_clinica, delete_espec, delete_med, delete_pac, delete_agenda
-
+# ACRESCENTEI TODOS OS VIEWS DO DELETE ALL
+from app.views import delete_all_clinica, delete_all_espec, delete_all_med, delete_all_pac, delete_all_agenda
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -39,11 +40,11 @@ urlpatterns = [
     path('form_pac/', form_pac, name='form_pac'),
     path('form_agenda/', form_agenda, name='form_agenda'),
     # CREATE------------------------------------------------------------------------
-    path('create_clinica', create_clinica, name='create_clinica'),
-    path('create_espec', create_espec, name='create_espec'),
-    path('create_med', create_med, name='create_med'),
-    path('create_pac', create_pac, name='create_pac'),
-    path('create_agenda', create_agenda, name='create_agenda'),
+    path('create_clinica/', create_clinica, name='create_clinica'),
+    path('create_espec/', create_espec, name='create_espec'),
+    path('create_med/', create_med, name='create_med'),
+    path('create_pac/', create_pac, name='create_pac'),
+    path('create_agenda/', create_agenda, name='create_agenda'),
     # EDIT------------------------------------------------------------------------
     path('edit_clinica/<int:pk>/', edit_clinica, name='edit_clinica'),
     path('edit_espec/<int:pk>/', edit_espec, name='edit_espec'),
@@ -60,4 +61,10 @@ urlpatterns = [
     path('delete_med/<int:pk>/', delete_med, name='delete_med'),
     path('delete_pac/<int:pk>/', delete_pac, name='delete_pac'),
     path('delete_agenda/<int:pk>/', delete_agenda, name='delete_agenda'),
+    # ACRESCENTEI O DELETE ALL INTEIRO
+    path('delete_all_clinica/', delete_all_clinica, name='delete_all_clinica'),
+    path('delete_all_espec/', delete_all_espec, name='delete_all_espec'),
+    path('delete_all_med/', delete_all_med, name='delete_all_med'),
+    path('delete_all_pac/', delete_all_pac, name='delete_all_pac'),
+    path('delete_all_agenda/', delete_all_agenda, name='delete_all_agenda'),
 ]

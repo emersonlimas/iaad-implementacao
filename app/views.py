@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from app.forms import CLINICAForm, ESPECIALIDADEForm, MEDICOForm, PACIENTEForm, AGENDACONSULTAForm
 from app.models import CLINICA, ESPECIALIDADE, MEDICO, PACIENTE, AGENDACONSULTA
+from django.db import connection  # IMPORTEI ESSA NOVA BIBLIOTECA
 
 # Read------------------------------------------------------------------------
 
@@ -174,7 +175,7 @@ def update_med(request, pk):
         form.save()
         return redirect('tab_med')
 
-# DELETE--------------------------------------------------------------------------
+# DELETE E DELETE ALL------------------------------------------------------------
 
 
 def delete_clinica(request, pk):
@@ -205,3 +206,36 @@ def delete_agenda(request, pk):
     agenda = AGENDACONSULTA.objects.get(pk=pk)
     agenda.delete()
     return redirect('tab_agenda')
+
+
+cursor = connection.cursor()  # ACRESCENTEI DAQUI PRA BAIXO
+
+
+def delete_all_clinica(request):
+    cursor.execute('call excluir_clinicas')
+    result = cursor.fetchall()
+    return render(request, 'tab_clinica.html', {'result': result})
+
+
+def delete_all_espec(request):
+    cursor.execute('call excluir_espec')
+    result = cursor.fetchall()
+    return render(request, 'tab_espec.html', {'result': result})
+
+
+def delete_all_med(request):
+    cursor.execute('call excluir_med')
+    result = cursor.fetchall()
+    return render(request, 'tab_med.html', {'result': result})
+
+
+def delete_all_pac(request):
+    cursor.execute('call excluir_pac')
+    result = cursor.fetchall()
+    return render(request, 'tab_pac.html', {'result': result})
+
+
+def delete_all_agenda(request):
+    cursor.execute('call excluir_agenda')
+    result = cursor.fetchall()
+    return render(request, 'tab_agenda.html', {'result': result})
