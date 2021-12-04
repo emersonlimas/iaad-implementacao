@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from app.forms import CLINICAForm, ESPECIALIDADEForm, MEDICOForm, PACIENTEForm, AGENDACONSULTAForm, CLINICAMEDICOForm
 from app.models import CLINICA, CLINICAMEDICO, ESPECIALIDADE, MEDICO, PACIENTE, AGENDACONSULTA
 from django.db import connection  
+from django.core.paginator import Paginator
 # Read------------------------------------------------------------------------
 
 
@@ -11,37 +12,110 @@ def home(request):
 
 def tab_clinica(request):
     data = {}
-    data['clinica'] = CLINICA.objects.all()
+    search = request.GET.get('search')
+    if search:
+        filtrado = CLINICA.objects.filter(NomeCli__icontains=search)
+        paginator = Paginator(filtrado, 2)
+        pages = request.GET.get('page')
+        data['clinica'] = paginator.get_page(pages)
+        
+    else:
+        #data['clinica'] = CLINICA.objects.all()        
+        all = CLINICA.objects.all()
+        paginator = Paginator(all, 2)
+        pages = request.GET.get('page')
+        data['clinica'] = paginator.get_page(pages)
+
     return render(request, 'tab_clinica.html', data)
 
 
 def tab_espec(request):
     data = {}
-    data['especialidade'] = ESPECIALIDADE.objects.all()
+    search = request.GET.get('search')
+    if search:
+        filtrado = ESPECIALIDADE.objects.filter(NomeEspec__icontains=search)
+        paginator = Paginator(filtrado, 2)
+        pages = request.GET.get('page')
+        data['especialidade'] = paginator.get_page(pages)
+        
+    else:        
+        all = ESPECIALIDADE.objects.all()
+        paginator = Paginator(all, 2)
+        pages = request.GET.get('page')
+        data['especialidade'] = paginator.get_page(pages)
+    
     return render(request, 'tab_espec.html', data)
 
 
 def tab_med(request):
     data = {}
-    data['medico'] = MEDICO.objects.all()
+    search = request.GET.get('search')
+    if search:
+        filtrado = MEDICO.objects.filter(NomeMed__icontains=search)
+        paginator = Paginator(filtrado, 2)
+        pages = request.GET.get('page')
+        data['medico'] = paginator.get_page(pages)
+        
+    else:      
+        all = MEDICO.objects.all()
+        paginator = Paginator(all, 2)
+        pages = request.GET.get('page')
+        data['medico'] = paginator.get_page(pages)
+
     return render(request, 'tab_med.html', data)
 
 
 def tab_pac(request):
     data = {}
-    data['paciente'] = PACIENTE.objects.all()
+    search = request.GET.get('search')
+    if search:
+        filtrado = PACIENTE.objects.filter(NomePac__icontains=search)
+        paginator = Paginator(filtrado, 2)
+        pages = request.GET.get('page')
+        data['paciente'] = paginator.get_page(pages)
+        
+    else:        
+        all = PACIENTE.objects.all()
+        paginator = Paginator(all, 2)
+        pages = request.GET.get('page')
+        data['paciente'] = paginator.get_page(pages)
+
     return render(request, 'tab_pac.html', data)
 
 
 def tab_agenda(request):
     data = {}
-    data['agenda'] = AGENDACONSULTA.objects.all()
+    search = request.GET.get('search')
+    if search:
+        filtrado = AGENDACONSULTA.objects.filter(CpfPaciente__icontains=search)
+        paginator = Paginator(filtrado, 2)
+        pages = request.GET.get('page')
+        data['agenda'] = paginator.get_page(pages)
+        
+    else:        
+        all = AGENDACONSULTA.objects.all()
+        paginator = Paginator(all, 2)
+        pages = request.GET.get('page')
+        data['agenda'] = paginator.get_page(pages)
+
     return render(request, 'tab_agenda.html', data)
 
 
 def tab_climed(request):
     data = {}
-    data['climed'] = CLINICAMEDICO.objects.all()
+    search = request.GET.get('search')
+    if search:
+        filtrado = CLINICAMEDICO.objects.filter(CodCli__icontains=search)
+        paginator = Paginator(filtrado, 2)
+        pages = request.GET.get('page')
+        data['climed'] = paginator.get_page(pages)
+        
+    else:        
+        all = CLINICAMEDICO.objects.all()
+        paginator = Paginator(all, 2)
+        pages = request.GET.get('page')
+        data['climed'] = paginator.get_page(pages)
+    
     return render(request, 'tab_climed.html', data)
 
 
@@ -80,7 +154,6 @@ def form_climed(request):
     data = {}
     data['form_climed'] = CLINICAMEDICOForm()
     return render(request, 'form_climed.html', data)
-
 
 # VIEW--------------------------------------------------------------------------
 
