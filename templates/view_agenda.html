@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+
+<head>
+    <meta charset="UTF-8">
+    <title>CRUD - Clinica Medico</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+</head>
+
+<body>
+    <div class="col-8 m-auto pt-2 pb-2 text-center">
+        <h1>VIZUALIZAR CLÍNICA</h1>
+    </div>
+ <!-- FORMULARIO -->
+ <div class="col-8 m-auto pt-2 pb-2 text-center">
+    <strong>Código da Clinica: </strong>{{agenda.CodCli}}<br>
+    <strong>Código do Medico: </strong>{{agenda.CodMed}}<br>
+    <strong>CPF do Paciente: </strong>{{agenda.CpfPaciente}}<br>
+    <strong>Data da Consulta: </strong>{{agenda.Data}}<br>
+</div>
+
+    <div class="col-8 m-auto pt-2 pb-2 text-center">
+        <a href="/tab_agenda" class="btn btn-info">VOLTAR</a>
+    </div>
+
+</body>
+</html>
