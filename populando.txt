@@ -1,0 +1,57 @@
+CLINICA:
+
+'100', 'Clinica de Petrolina', 'Rua Madalena, 505, Petrolina, PE', '87922222222', 'clinicadepetrolina@atendimento.com'
+'101', 'Clinica de Rajada', 'Rua Outro Mundo, 300, Rajada, PE', '87944444444', 'clinicaderajada@atendimento.com'
+'102', 'Clinica de Dois Irmãos', 'Rua Florisbela, 146, Recife, PE', '8195555555', 'clinicadeDI@atendimento.com'
+'103', 'Clinica de Juazeiro', 'Rua Oswaldo Montenegro, 57, Juazeiro, BA', '74933333333', 'clinicadejuazeiro@atendimento.com'
+'105', 'Clinica da Varzea', 'Rua Dom Pedro, 1, Recife, PE', '81911111111', 'clinicadavarzea@atendimento.com'
+
+ESPECIALIDADE:
+
+'10', 'Pediatria', 'MEDICOS(AS) PEDIATRAS'
+'20', 'Dermatologia', 'MEDICOS(AS) DERMATOLOGOS'
+'30', 'Fisioterapia', 'FISIOTERAPEUTAS'
+'40', 'Odontologia', 'MEDICOS(AS) DENTISTAS'
+'50', 'Ginecologia', 'MEDICOS(AS) GINECOLOGISTAS'
+
+MEDICO:
+
+'1001', 'Luarbia Cardoso Rocha', 'F', '74901010100', 'luarbiacr@medico.com', '20'
+'1002', 'Ana Julia Gomes de Sá', 'F', '87989898987', 'anajuliags@medico.com', '40'
+'1003', 'Ana Laura Gomes Ribeiro', 'F', '81978977897', 'analauragr@medico.com', '40'
+'1004', 'Nathan da Mata Junior', 'M', '74121212122', 'nathanmj@medico.com', '40'
+'1005', 'Stefany Barbosa Almeida', 'F', '87911112222', 'stefanyba@medico.com', '40'
+'1006', 'Sebastião Oliveira da Mata', 'M', '81966666666', 'sebastiaoom@medico.com', '10'
+'1007', 'Andre Silva Ramalho', 'M', '87977777777', 'andresr@medico.com', '10'
+'1008', 'Bianca Andrade Dias', 'F', '81988888888', 'biancaad@medico.com', '30'
+'1009', 'Rafael Sousa Santos', 'M', '74999999999', 'rafaelss@medico.com', '20'
+'1010', 'Marcos Jonas Alves Barros ', 'M', '81911113333', 'marcosjab@medico.com', '40'
+'1011', 'Rafaela Borges Cardoso ', 'F', '74911114444', 'rafaelabc@medico.com', '40'
+'1012', 'Maikon Duarte Carvalho', 'M', '87911115555', 'maikondc@medico.com', '40'
+'1013', 'Luna Freitas Garcia', 'F', '74911116666', 'lunafg@medico.com', '40'
+'1014', 'Caio Camargo Silva', 'M', '81911117777', 'caiocg@medico.com', '40'
+'1015', 'Luciano Francisco Rafael', 'M', '87911118888', 'lucianofr@medico.com', '40'
+'1016', 'Jamilly Lima Lopes', 'F', '87911119999', 'jamillyll@medico.com', '40'
+
+PACIENTE:
+
+'10110110110', 'Lavinia Andressa Nunes', '1990-05-25', 'F', '87963258741', 'laviniaan@paciente.com'
+'10210210220', 'Amanda Corsino Almeida', '1999-06-30', 'F', '81951515151', 'amandaca@paciente.com'
+'10310310303', 'Thiago Orlando Diaz', '2000-01-03', 'M', '87965656565', 'thiago@paciente.com'
+'40440440440', 'Ernandes Rodrigo Nativo', '1988-10-31', 'M', '81974747475', 'ernandesrn@paciente.com'
+'50505050505', 'Maria do Carmo Santos', '2003-12-25', 'F', '74940404057', 'mariacs@paciente.com'
+
+CLINICAMEDICO:
+
+'105', '1006', '2017-10-23', '40'
+'102', '1008', '2020-05-15', '35'
+'103', '1009', '2000-06-04', '45'
+'103', '1001', '2021-11-08', '10'
+'100', '1007', '2014-08-10', '45'
+
+AGENDACONSULTA:
+
+'105', '1006', '10210210220', '2021-12-03'
+'100', '1007', '10310310303', '2021-12-15'
+'103', '1001', '50505050505', '2022-01-08'
+'102', '1008','40440440440', '2022-01-02'

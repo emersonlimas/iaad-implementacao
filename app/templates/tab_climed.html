@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <title>CRUD - Clinica Medico</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+</head>
+
+<body>
+    <div class="col-8 m-auto pt-2 pb-2 text-center">
+        <h1>TABELA - CLINICA MEDICO</h1>
+    </div>
+
+    <div class="col-8 m-auto pt-2 pb-2 text-center mt-5">
+        <form  method="get">
+            <div class="input-group mb-3 mt-4">
+                <input type="text" class="form-control" placeholder="O que você procura?" aria-label="O que você procura?" aria-describedby="button-addon2" id="search" name="search">
+                <button class="btn btn-dark" type="submit" id="button-addon2">Buscar</button>
+            </div>
+        </form>
+    </div>
+
+    <div class="col-8 m-auto pt-2 pb-2 text-center mt-5">
+        <div class="d-flex m-auto justify-content-end">
+            <a href="/" class="btn btn-info mr-2">Voltar</a>
+            <a href="/delete_all_climed/" class="btn btn-danger mr-2 btnDel">Deletar tudo</a>
+            <a class="btn btn-success" href="/form_climed">Adicionar</a>
+        </div>
+    </div>
+
+    <div class="col-8 m-auto pt-4 pb-2 text-center">
+        <table class="table">
+            <thead class="thead-dark">
+              <tr>
+                <th scope="col">Código da Clínica</th>
+                <th scope="col">Código do Medico</th>
+                <th scope="col">Ações</th>
+              </tr>
+            </thead>
+            <tbody>
+                {% for tupla in climed %}
+                    <tr>
+                        <th>{{tupla.CodCli}}</th>
+                        <td>{{tupla.CodMed}}</td>
+                        <td>
+                            <a href="/view_climed/{{tupla.id}}/" class="btn btn-dark">Visualizar</a> <!-- PRA FAZER A LIGAÇÃO, BASTA REVER AS AULAS E MOFICAR CERTINHO, NÃO HÁ DIFICULDADE-->
+                            <a href="/edit_climed/{{tupla.id}}/" class="btn btn-primary">Editar</a>
+                            <a href="/delete_climed/{{tupla.id}}/" class="btn btn-danger btnDel">Deletar</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <nav aria-label="Page navigation example">
+            <ul class="pagination justify-content-center">
+                {% if climed.has_previous %}
+                    <li class="page-item">
+                        <a class="page-link" href="?page={{climed.previous_page_number}}" aria-label="Previous">
+                        <span aria-hidden="true">&laquo;</span>
+                        </a>
+                    </li>
+                {% endif %}
+
+                <li class="page-item active"><a class="page-link" href="#">{{climed.number}}</a></li>
+
+                {% if climed.has_next %}
+                    <li class="page-item">
+                        <a class="page-link" href="?page={{climed.next_page_number}}" aria-label="Next">
+                        <span aria-hidden="true">&raquo;</span>
+                        </a>
+                    </li>
+                {% endif %}
+            </ul>
+        </nav> 
+    </div>
+
+</body>
+</html>

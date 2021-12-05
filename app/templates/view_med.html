@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+
+<head>
+    <meta charset="UTF-8">
+    <title>CRUD - Clinica Medico</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+</head>
+
+<body>
+    <div class="col-8 m-auto pt-2 pb-2 text-center">
+        <h1>VIZUALIZAR MÉDICO</h1>
+    </div>
+ <!-- FORMULARIO -->
+ <div class="col-8 m-auto pt-2 pb-2 text-center">
+    <strong>Código do Médico: </strong>{{medico.CodMed}}<br>
+    <strong>Nome do Médico: </strong>{{medico.NomeMed}}<br>
+    <strong>Gênero: </strong>{{medico.Genero}}<br>
+    <strong>Telefone: </strong>{{medico.Telefone}}<br>
+    <strong>E-mail: </strong>{{medico.Email}}<br>
+    <strong>Código da Especialidade: </strong>{{medico.CodEspec}}<br>
+</div>
+
+    <div class="col-8 m-auto pt-2 pb-2 text-center">
+        <a href="/tab_med" class="btn btn-info">VOLTAR</a>
+    </div>
+
+</body>
+</html>

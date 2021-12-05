@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+
+<head>
+    <meta charset="UTF-8">
+    <title>CRUD - Clinica Medico</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+</head>
+
+<body>
+    <!-- FORMULARIO -->
+    <div class="col-6 m-auto pt-2 pb-2 mt-5">
+        <div class="card card-outline-secondary">
+          <div class="card-header alert-success">
+            <div class="d-flex justify-content-between">
+              <div>
+                <h3 class="mb-0">Cadastrar Paciente</h3>
+              </div>
+              <div>
+                <a href="/tab_pac" class="btn btn-primary">Voltar</a>
+              </div>
+            </div>
+          </div>
+          <div class="card-body">
+            <form name="pac" id="pac" action="{% if paciente %}/update_pac/{{paciente.CpfPaciente}}/{% else %}/create_pac/{% endif %}" method="post">
+              {% csrf_token %}
+              <div class="form-group row mt-2">
+                <label class="col-lg-4 col-form-label form-control-label">CPF do Paciente:</label>
+                <div class="col-lg-6">
+                  <span class="form-control">{{form_pac.CpfPaciente}}</span>
+                </div>
+              </div>
+    
+              <div class="form-group row mt-2">
+                <label class="col-lg-4 col-form-label form-control-label">Nome do Paciente:</label>
+                <div class="col-lg-6">
+                  <span class="form-control">{{form_pac.NomePac}}</span>
+                </div>
+              </div>
+    
+              <div class="form-group row mt-2">
+                <label class="col-lg-4 col-form-label form-control-label">Data de Nascimento:</label>
+                <div class="col-lg-6">
+                  <span class="form-control">{{form_pac.DataNascimento}}</span>
+                </div>
+              </div>
+    
+              <div class="form-group row mt-2">
+                <label class="col-lg-4 col-form-label form-control-label">Genero:</label>
+                <div class="col-lg-6">
+                  <span class="form-control">{{form_pac.Genero}}</span>
+                </div>
+              </div>
+
+              <div class="form-group row mt-2">
+                <label class="col-lg-4 col-form-label form-control-label">Telefone:</label>
+                <div class="col-lg-6">
+                  <span class="form-control">{{form_pac.Telefone}}</span>
+                </div>
+              </div>
+
+              <div class="form-group row mt-2">
+                <label class="col-lg-4 col-form-label form-control-label">E-mail:</label>
+                <div class="col-lg-6">
+                  <span class="form-control">{{form_pac.Email}}</span>
+                </div>
+              </div>
+    
+              <div class="col-lg-6 form-group row mt-5 m-auto">
+                <label class="col-lg-2 col-form-label form-control-label"></label>
+                <div class="col-lg-6"> 
+                  <input class="btn btn-success" type="submit" value="Cadastrar">
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+    </div>
+
+</body>
+</html>
